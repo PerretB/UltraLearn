@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="ANR JCJC Ultra-Learn, supervised hierarchical clustering, ultrametric fitting, ultrametric layer" />
+        <meta name="author" content="Benjamin Perret" />
+        <title>Ultra-Learn</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.png" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+    </head>
+    <body>
+        <script type="text/javascript">
+        function FunctSpoiler(id) {
+            if (document.getElementById(id).style.display != '') 
+            { document.getElementById(id).style.display = ''; } 
+            else { document.getElementById(id).style.display = 'none';  }
+     }
+        </script>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="https://anr.fr/Projet-ANR-20-CE23-0019" target="_blank" ><img src="assets/logo-ANR.jpg" alt="Funded by ANR"  style="height:100px; margin-top:57px; margin-left:-20px;position:absolute;"/></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#sec-description">Description</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#sec-members">Members</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#sec-publications">Publications</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="#sec-code">Code</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header   <header class="masthead" style="background-image: url('assets/img/home-bg.jpg')"> -->
+        <header class="masthead">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>ULTRA-LEARN</h1>
+                            <span class="subheading">Supervised Ultrametric Learning</span>
+                            <p>Projet ANR JCJC ANR-20-CE23-0019<br/>04/01/2021 - 03/31/2025<br/><a href="http://ligm.u-pem.fr/" target="_blank">LIGM</a>,<a href="https://www.esiee.fr/" target="_blank">ESIEE Paris</a>,<a href="https://www.univ-gustave-eiffel.fr/en/" target="_blank">Université Gustave Eiffel</a></p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <article class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <h2 class="section-heading" id="sec-description">Description</h2>
+                        <p>A hierarchical clustering corresponds to recursively dividing a dataset into increasingly smaller groups. The fundamental assumption of this approach is that the visible structure in the data depends on the chosen scale of observation. This hypothesis has been confirmed, in theory and in practice, on many complex data such as social networks, electrical networks, actor networks, computer networks, cortical brain networks, linguistic networks, etc. Building high quality hierarchical representations is therefore an important step in the analysis and in the understanding of these data. The hierarchical clustering methods used today are essentially unsupervised and are based on heuristic algorithms: therefore, the hierarchical clustering obtained does not correspond to the optimization of an explicit criterion. These limitations are due to difficulties in solving optimization problems on these structures, as they are generally NP-complete.</p>
+
+                        <p>In this project, we propose to study the problem of optimizing hierarchical clusterings from the angle of optimizing ultrametrics which are a dual and continuous representation of hierarchical clusterings. In topology, an ultrametric distance is obtained by replacing the triangular inequality by the ultrametric inequality, which requires that any triplet of points forms an isosceles triangle where the two equal sides are at least as large as the third side. This ultrametric inequality imposes a new non-convex constraint which is difficult to manage. We can nevertheless reformulate the problem of optimization of ultrametrics to make this constraint implicit. It then becomes possible to optimize ultrametrics with gradient descent algorithms. This project aims to develop this possibility to obtain supervised learning methods for hierarchical clustering working on large datasets. In other words, we will formulate the problem of supervised hierarchical clusterings learning on the continuous space of ultrametrics, hence the name of the project: ULTRA-LEARN.</p>
+
+                        <img class="img-fluid" src="assets/dataset_varied.png" alt="A dataset" style="padding-right: 35px;"/><img class="img-fluid" src="assets/dasgupta_varieddendrogram.gif" alt="Continous hierarchical clustering optimization" width="350px"/>
+                        <span class="caption text-muted">Evolution of the dendrogram (right) representing a hierarchical clustering of a 2d point cloud composed of three clusters (left) during the continuous optimization of Dasgupta's hierarchical cost function relaxation.</span>
+
+                        <p>This progress will be based on two main ingredients. The first one is the development of ultrametric networks, i.e. models which can be trained, and which will output ultrametrics. An ultrametric network will itself be made up of two elements, a multilayer neural network for the extraction of characteristics and an ultrametric layer which will be able to produce an ultrametric from the characteristics provided by the neural network. This ultrametric layer will be differentiable: this will allow us to learn the parameters of the network end-to-end. The second ingredient of the method will be the definition of cost functions to measure the dissimilarity effectively and differentially between two ultrametrics. All these elements will also benefit from algorithmic development to operate on highly parallel hardware such as GPUs to allow the processing of large datasets.</p>
+
+                        <p>The ultrametric networks developed will be applied on three problems. We will propose an ultrametric network to estimate hierarchical segmentations of images, i.e.  the complete decomposition of an image into objects and the iterative refinement of these objects into parts. The second application will aim at the development of a classifier taking advantage of a class ontology known a priori, for example we know that a cat and a dog are both mammals and that they are semantically closer than a bird. Finally, the third application considered is the hierarchical semi-supervised grouping of data; in this case, we will seek to construct an optimal hierarchical grouping based on partial information given a priori by an expert.</p>
+                       
+                        
+                        <h2 class="section-heading" id="sec-members">Members</h2>
+
+                        <p>The project team is composed of 4 permanent researchers all affiliated with <a href="http://ligm.u-pem.fr/" target="_blank">LIGM</a>,<a href="https://www.esiee.fr/" target="_blank">ESIEE Paris</a>,<a href="https://www.univ-gustave-eiffel.fr/en/" target="_blank">Université Gustave Eiffel</a>.</p>
+
+                        <h4>Permanent members</h4>
+                        <ul>
+                            <li><a href="https://perso.esiee.fr/~perretb/" target="_blank">Benjamin Perret (PI)</a></li>
+                            <li><a href="https://perso.esiee.fr/~chierchg/" target="_blank">Giovanni Chierchia</a></li>
+                            <li><a href="https://perso.esiee.fr/~coustyj/" target="_blank">Jean Cousty</a></li>
+                            <li><a href="http://www.laurentnajman.org/" target="_blank">Laurent Najman</a></li>
+                        </ul>
+
+                        <h4>Students</h4>
+                        <ul>
+                            <li>Wagner Rodrigues, Master Thesis, École polytechnique, <it>Supervised end-to-end learning of Hierarchical Clustering via Projection to Target Walking</it></li>
+                            <li>Carla Yagoub, Master Thesis,ENS Cachan & Centralesupelec, <it>Deep Hierarchical Clustering</it></li>
+            
+                            <li>Raphaël Lapertot, Master Thesis, ESIEE Paris, Université Gustave Eiffel, <it>Apprentissage supervisé de segmentations hiérarchiques d’images et de données</it></li>
+                        </ul>
+
+                        <h2 class="section-heading" id="sec-publications">Publications</h2>
+                        <p>Published and not yet published works:</p>
+                        <h4>Preliminary works</h4>
+                        <ol>
+                            <li>
+                                <div id="publi-ctloss">
+                                    <span  class="author">Perret, Benjamin and Cousty, Jean.</span><span class="title">Component Tree Loss Function: Definition and Optimization</span>  2021. <a href="https://arxiv.org/pdf/2101.08063.pdf" target="_blank"><img src="assets/pdf.png" alt="download" width="16" height="16"/></a>
+                                    <span class="spoiler" onclick="javascript:FunctSpoiler('spoilpre1')">Bibtex</span>
+                                    <div id="spoilpre1" class="spoilerContent" style="display: none;">
+                                        @article{perret2021component,<br/>
+                                        title={Component Tree Loss Function: Definition and Optimization},<br/>
+                                        author={Perret, Benjamin and Cousty, Jean},<br/>
+                                        journal={arXiv preprint arXiv:2101.08063},<br/>
+                                        year={2021}<br/>
+                                        }<br/>
+                                    </div>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h4>Conferences and journals:</h4>
+                        <ol>
+                            <li id="publi-ultfit">
+                                <span class="author">Chierchia, Giovanni and Perret, Benjamin</span> <span class="title">Ultrametric fitting by gradient descent.</span>Journal of Statistical Mechanics: Theory and Experiment, 12, 124004 (2020) doi:<a href="https://dx.doi.org/10.1088/1742-5468/abc62d" target="_blank">10.1088/1742-5468/abc62d</a>.  <a href="https://iopscience.iop.org/article/10.1088/1742-5468/abc62d/meta" target="_blank"><img src="assets/pdf.png" alt="download pdf" width="16" height="16"/></a> 
+                                <span class="spoiler" onclick="javascript:FunctSpoiler('spoil1')">Bibtex</span>
+                                <div id="spoil1" class="spoilerContent" style="display: none;">
+                                    @article{chierchia2020ultrametric,<br/>
+                                    title={Ultrametric fitting by gradient descent},<br/>
+                                    author={Chierchia, Giovanni and Perret, Benjamin},<br/>
+                                    journal={Journal of Statistical Mechanics: Theory and Experiment},<br/>
+                                    volume={2020},<br/>
+                                    number={12},<br/>
+                                    pages={124004},<br/>
+                                    year={2020},<br/>
+                                    publisher={IOP Publishing}<br/>
+                                    }<br/>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h2 class="section-heading" id="sec-code">Code</h2>
+
+                        The main developements can be found in the folowing repositories and notebooks:
+                        <ul>
+                            <li><a href="https://github.com/higra/Higra">Higra</a>: Python package for hierarchical graph analysis.</li>
+                            <li><a href="https://github.com/PerretB/ultrametric-fitting">Ultrametric Fitting by Gradient Descent</a>: optimization of hierarchical loss functions with gradient descent. See companion paper <a href="#publi-ultfit">"Ultrametric fitting by gradient descent"</a>.</li>
+                            <li><a href="https://colab.research.google.com/drive/10b67af_2g0kK8FwKPjAkfXw27kniZd6W?usp=sharing">Component tree loss function</a>: Colab notebook for the continuous optimization of topological loss functions based on component trees. See companion paper <a href="#publi-ctloss">"Component Tree Loss Function: Definition and Optimization"</a>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="small text-center text-muted fst-italic">Benjamin Perret 2021</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
